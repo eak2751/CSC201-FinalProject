@@ -4,6 +4,7 @@ public class GameList
 	private String genre;
 	private String name;
 	private int score;
+	private boolean favorite;
 	//private String favorite;
 	
 	public String getName()
