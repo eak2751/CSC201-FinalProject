@@ -34,6 +34,14 @@ public class GameList
 	{
 		genre= newGenre;
 	}
+	public boolean getFavorite()
+	{
+		return favorite;
+	}
+	public void setFavorite(boolean newFav)
+	{
+		favorite= newFav;
+	}
 	
 	
 	public void display()
