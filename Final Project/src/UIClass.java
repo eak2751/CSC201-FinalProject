@@ -64,7 +64,7 @@ public class UIClass
 		
 			answer=intKey.nextInt();
 			
-			if(answer==1)
+			if(answer==1)// The user has chosen to adding a game to the array.
 			{
 				wipeConsole();
 				bannerMain();
@@ -154,7 +154,7 @@ public class UIClass
 				}
 			}
 			
-			if(answer==2)
+			if(answer==2) // The user has chosen to delete an item from the array.
 			{
 				System.out.println("Choose the index number of the game to delete");
 				printAllNoTimeDelay();
@@ -173,16 +173,16 @@ public class UIClass
 				}
 			}
 			
-			if(answer==3)
+			if(answer==3)// The user has chosen to manage their list of favorites.
 			{
 				
 			}
 			
-			if(answer==4)
+			if(answer==4)// The user has chosen to display the whole array. 
 			{
 				printAllNoTimeDelay();
 			}
-			if(answer==5)
+			if(answer==5)// The user has chosen to exit the program.
 			{
 				exitProgram();
 				programContinues=false;
@@ -190,13 +190,15 @@ public class UIClass
 		}
 	}
 	
-	public static void bannerMain() {
+	public static void bannerMain() // Displays a banner.
+	{
 		System.out.println("      ---------------------------");
 		System.out.println("     |NVCC'S GAME DATABASE EDITOR|");
 		System.out.println("      ---------------------------\n");
 	}
 	
-	public static void loadMain() {
+	public static void loadMain() // Display The initial menu.
+	{
 		Scanner keyboard = new Scanner(System.in);
 		String introMessage = "Welcome to Game Search Engine";
 		String introMenuOptionA = "1) ADD ";
@@ -244,7 +246,8 @@ public class UIClass
 		System.out.println("Directions: With this program you are able to\n\t    add, remove, and favorite our database.");
 	}
 	
-	public static void printAllNoTimeDelay() {
+	public static void printAllNoTimeDelay() // Displays the whole array without any timed delay.
+	{
 		for(int i=0; i<=listPosition;i++) {
 			System.out.println("Showing Index: " + i);
 			list[i].display();
@@ -252,7 +255,8 @@ public class UIClass
 		}
 	}
 	
-	public static void returnToMain() {
+	public static void returnToMain() // Prompts the user to return to the main screen, exit from the program or return to the previous menu.
+	{
 		Scanner returnKey = new Scanner(System.in);
 		System.out.println("To return to main screen, press 0");
 		System.out.println("To exit from the program, press 1");
@@ -271,7 +275,8 @@ public class UIClass
 		}	
 	}
 	
-	public static void exitProgram() {
+	public static void exitProgram() // Exits the program.
+	{
 		System.out.println("You have decided to end the program.");
 			try	{
 		    	TimeUnit.SECONDS.sleep(1);
@@ -301,11 +306,13 @@ public class UIClass
 				
 	}
 	
-	public static void showPrevious() {
+	public static void showPrevious() // Goes to the previous menu.
+	{
 		
 	}
 	
-	public static void wipeConsole() throws AWTException{
+	public static void wipeConsole() throws AWTException // Wipes the console. 
+	{
 		Robot robbie = new Robot();
         //shows the Console View
         robbie.keyPress(KeyEvent.VK_ALT);
@@ -326,7 +333,7 @@ public class UIClass
         robbie.keyRelease(KeyEvent.VK_R);
     }
     
-	public static void setNewRPG(RPG game)
+	public static void setNewRPG(RPG game)// Adds an RPG object to the array. The name and 
 	{
 		
 		Scanner stringKey = new Scanner(System.in);
@@ -335,10 +342,19 @@ public class UIClass
 		game.setName(gameName);
 		System.out.println("What would you score "+gameName+"?");
 		game.setScore(stringKey.nextInt());
-		
-		listPosition+=1;
-		
+		System.out.println("Is this game a JRPG? (yes/ no)")
+		String jrpg= stringKey.nextLine();
+		if (jrpg.equalsIgnoreCase("yes"))
+		{
+			game.setJRPG(true);
+		}
+		else if (jrpg.equalsIgnoreCase("no"))
+		{
+			game.setJRPG(false);
+		}
+	
 		list[listPosition]=game;
+		listPosition+=1;
 		returnToMain();
 	}
 	
@@ -369,8 +385,8 @@ public class UIClass
 		{
 			game.setFPS(false);
 		}
-		listPosition+=1;
 		list[listPosition]=game;
+		listPosition+=1;
 		returnToMain();
 	}
 	
@@ -388,7 +404,7 @@ public class UIClass
 		game.setScore(stringKey.nextInt());
 		stringKey.nextLine();
 		
-		System.out.println("What sport is this game?");
+		System.out.println("What sport is this game based on?");
 		game.setSport(stringKey.nextLine());
 		stringKey.nextLine();
 		
@@ -401,14 +417,13 @@ public class UIClass
 		{
 			game.setTeam(true);
 		}
-		else
+		else if (gameName.equalsIgnoreCase("no"))
 		{
 			game.setTeam(false);
 		}
 		
-		listPosition+=1;
-		
 		list[listPosition]=game;
+		listPosition+=1;
 		returnToMain();
 	}
 	
@@ -423,9 +438,8 @@ public class UIClass
 		System.out.println("What would you score "+gameName+"?");
 		game.setScore(stringKey.nextInt());
 
-		listPosition+=1;
-		
 		list[listPosition]=game;
+		listPosition+=1;
 		returnToMain();
 	}
 
